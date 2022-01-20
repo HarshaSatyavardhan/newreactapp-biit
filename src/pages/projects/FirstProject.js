@@ -12,6 +12,8 @@ const FirstProject = () => {
   const [solventstate, setSolventState] = useState("");
   const [fetchData, setFetchData] = useState("");
   const [arrayData, setArrayData] = useState([]);
+  const [showeditorone, setShoweditorone] = React.useState(false);
+  const [showeditortwo, setShoweditortwo] = React.useState(false);
 
   const [Error, setError] = useState(null);
 
@@ -318,12 +320,27 @@ const FirstProject = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-row">
-                  <Editor {...{ setSoluteState }} />
-                  <Editortwo {...{ setSolventState }} />
+                <div className="flex flex-row gap-6">
+                  {showeditorone && <Editor {...{ setSoluteState }} />}
+
+                  {showeditortwo && <Editortwo {...{ setSolventState }} />}
                 </div>
                 <form noValidate onSubmit={onSubmit}>
                   <div className="mt-8 space-y-6">
+                    <button
+                      className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => setShoweditorone((value) => !value)}
+                    >
+                      Solute
+                    </button>
+                    <button
+                      className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => setShoweditortwo((value) => !value)}
+                    >
+                      Solvent
+                    </button>
                     <input
                       className="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full"
                       placeholder="SOLUTE"
